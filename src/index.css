@@ -1,0 +1,127 @@
+/* Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+/* Colors */
+:root {
+    --white-color: #fdfdfd;
+    --black-color: #1f1f1f;
+    --primary-color: #3a5fbd;
+    --danger-color: #c53939;
+    --success-color: #549b33
+}
+
+
+/* Base */
+body {
+    background-color: #f5f5fe;
+    color: var(--black-color);
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+/* Components */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: .5s ease-in;
+}
+
+.button:hover {
+    opacity: .9;
+}
+
+.button.danger {
+    background-color: var(--danger-color);
+}
+
+.button.pagination-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.pagination-button.current {
+    background-color: #f5f5fe;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form > h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* Helpers */
+.flex {
+    display: flex;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.g-20 {
+    gap: 20px;
+}
+
+.g-16 {
+    gap: 16px;
+}
+
+.g-10 {
+    gap: 10px;
+}
+
+.f2f5 {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+    .f2f5 {
+        grid-template-columns: 1fr;
+    }
+}
