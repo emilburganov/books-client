@@ -4,8 +4,17 @@ export const $fetch = async (route, method = "GET", body) => {
         "Authorization": `Bearer ${localStorage.getItem("token")}`,
     };
 
-    if (method === "GET") {
+    if (["GET", "DELETE"].includes(method)) {
         url.search = new URLSearchParams(body ?? {});
+    }
+
+    if (["PUT", "PATCH"].includes(method)) {
+        if (!body) {
+            body = new FormData()
+        }
+
+        body.set("_method", method);
+        method = "POST";
     }
 
     const response = await fetch(url, {

@@ -2,6 +2,10 @@ import React, {useRef} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {$fetch} from "../api";
 
+/**
+ * @returns {Element}
+ * @constructor
+ */
 const RegisterPage = () => {
     const form = useRef();
     const navigate = useNavigate();
@@ -12,8 +16,7 @@ const RegisterPage = () => {
         const result = await $fetch("/register", "POST", new FormData(form.current));
 
         if (result) {
-            localStorage.setItem("token", result.data.token);
-            navigate("/");
+            navigate("/login");
         }
     }
 

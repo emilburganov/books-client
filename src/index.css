@@ -47,7 +47,7 @@ header {
 .logo {
     color: inherit;
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     display: flex;
     align-items: baseline;
@@ -79,12 +79,30 @@ footer {
     padding: 20px;
     border-radius: 10px;
     background-color: var(--white-color);
+    box-shadow: rgba(217, 217, 217, 0.2) 0 8px 16px;
+}
+
+.card > img {
+    width: auto;
+    height: 200px;
 }
 
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
     gap: 20px;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
 }
 
 .input-group {
@@ -124,7 +142,7 @@ footer {
     border-radius: 10px;
     outline: none;
     cursor: pointer;
-    transition: .5s ease-in;
+    transition: .4s ease-in;
 }
 
 .button:hover {
@@ -188,9 +206,38 @@ footer {
     font-weight: 600;
 }
 
+.key-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.key-value > span {
+    font-weight: 400;
+    color: #5d5d5d;
+}
+
+.key-value > p {
+    color: inherit;
+}
+
+.card.form {
+    height: fit-content;
+}
+
+.form {
+    position: sticky;
+    top: 20px;
+}
+
 /* Helpers */
 .shadow {
     box-shadow: rgba(217, 217, 217, 0.2) 0 8px 16px;
+}
+
+.mt-a {
+    margin-top: auto;
 }
 
 .flex {
@@ -203,6 +250,10 @@ footer {
 
 .sb {
     justify-content: space-between;
+}
+
+.as {
+    align-items: flex-start;
 }
 
 .wrap {
@@ -225,6 +276,10 @@ footer {
     gap: 16px;
 }
 
+.g-40 {
+    gap: 40px;
+}
+
 .g-10 {
     gap: 10px;
 }
@@ -243,4 +298,46 @@ footer {
     .f2f5 {
         grid-template-columns: 1fr;
     }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+}
+
+.modal > form {
+    transform: scale(0);
+    transition: .4s ease-in;
+}
+
+.modal.active {
+    transform: scale(1);
+}
+
+.modal.active > form {
+    transform: scale(1);
+}
+
+.h-300 {
+    height: 100% !important;
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-fit {
+    width: fit-content;
 }
