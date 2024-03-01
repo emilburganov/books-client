@@ -30,7 +30,7 @@ const RegisterPage = () => {
                 </div>
                 <div className="input-group">
                     <label>Пароль:</label>
-                    <input type="text" className="input" name={"password"}/>
+                    <input type="password" className="input" name={"password"}/>
                 </div>
                 <div className="input-group">
                     <label>Повторение пароля:</label>

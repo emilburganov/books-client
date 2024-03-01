@@ -11,7 +11,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const getBooks = async () => {
-        const result = await $fetch("/books");
+        const result = await $fetch("/books/popular");
 
         if (result) {
             setBooks(result.data);
@@ -31,6 +31,7 @@ const HomePage = () => {
 
     return (
         <div className={"flex col g-40"}>
+            <h1 className={"title"}>Популярные книги</h1>
             <div className={"card-grid"}>
                 {books.map(book =>
                     <div key={book.id} className="card flex col g-20">

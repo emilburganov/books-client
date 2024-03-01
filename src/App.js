@@ -23,17 +23,19 @@ function App() {
                 <div className="container h-max">
                     <Routes>
                         {isAuth ? <>
-                                <Route path={"/books"} element={<BooksPage/>}/>
                                 <Route path={"/selected-books"} element={<SelectedBooksPage/>}/>
-                                <Route path={"/books/:id"} element={<BookPage/>}/>
                                 {isAdmin && <Route path={"/admin"} element={<AdminPage/>}/>}
                             </>
                             :
                             <>
+
                                 <Route path={"/register"} element={<RegisterPage/>}/>
                                 <Route path={"/login"} element={<LoginPage/>}/>
                             </>
                         }
+                        <Route path={"/books"} element={<BooksPage isBestBooks={false}/>}/>
+                        <Route path={"/best-books"} element={<BooksPage isBestBooks={true}/>} />
+                        <Route path={"/books/:id"} element={<BookPage/>}/>
                         <Route path={"*"} element={<HomePage/>}/>
                     </Routes>
                 </div>

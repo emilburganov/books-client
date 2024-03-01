@@ -353,7 +353,7 @@ const AdminPage = () => {
                     <div className="flex ac g-20">
                         <input type="checkbox" className="checkbox"
                                name={"is_shown"}/>
-                        <label>Показывать на главной</label>
+                        <label>Показывать на странице популярных</label>
                     </div>
                     <div className="input-group">
                         <label>Картинка:</label>
@@ -423,7 +423,7 @@ const AdminPage = () => {
                         <div className="flex ac g-20">
                             <input defaultValue={book.is_shown} type="checkbox" className="checkbox"
                                    name={"is_shown"}/>
-                            <label>Показывать на главной</label>
+                            <label>Показывать на странице популярных</label>
                         </div>
                         <div className="input-group">
                             <label>Картинка:</label>

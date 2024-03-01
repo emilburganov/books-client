@@ -85,21 +85,21 @@ const BookPage = () => {
                         </div>
                     </div>
                     <div className="flex col g-10 mt-a">
-                        <form ref={rateForm} onSubmit={rateBook} className="flex ac g-10">
+                        {isAuth && <form ref={rateForm} onSubmit={rateBook} className="flex ac g-10">
                             <input
                                 defaultValue={5}
                                 className={"input"}
                                 type="number"
                                 min={1}
                                 max={5}
-                                step={0.01}
+                                step={0.1}
                                 name={"rating"}
                             />
                             <button className={"button w-100"}>Поставить оценку</button>
-                        </form>
+                        </form>}
                         {isAuth &&
                             (
-                                book.is_selected ?
+                                Boolean(book.is_selected) ?
                                     <button onClick={() => unselectBook(book.id)} className={"button danger"}>
                                         Удалить из избранных
                                     </button>

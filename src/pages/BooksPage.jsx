@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
  * @returns {JSX.Element}
  * @constructor
  */
-const BooksPage = () => {
+const BooksPage = ({isBestBooks}) => {
     const filterForm = useRef();
     const [books, setBooks] = useState([]);
     const [genres, setGenres] = useState([])
@@ -18,11 +18,17 @@ const BooksPage = () => {
         let result;
         if (e) {
             e.preventDefault();
+
             result = await $fetch("/books", "GET", new FormData(filterForm.current));
         } else {
-            result = await $fetch("/books");
+            const formData = new FormData(filterForm.current);
+            if (isBestBooks) {
+                formData.set("sorting", "rating_desk");
+                result = await $fetch("/books", "GET", formData);
+            } else {
+                result = await $fetch("/books");
+            }
         }
-
 
         if (result) {
             setBooks(result.data);
@@ -51,7 +57,7 @@ const BooksPage = () => {
             await getAuthors();
             await getBooks();
         })()
-    }, [])
+    }, [isBestBooks])
 
     if (!books || !genres || !authors) {
         return;
@@ -59,6 +65,7 @@ const BooksPage = () => {
 
     return (
         <div className={"flex col g-40"}>
+            <h1 className={"title"}>Все книги</h1>
             <div className="f2f5">
                 <form ref={filterForm} onSubmit={getBooks} className="form card">
                     <h3>Форма фильтрации и сортировки</h3>
@@ -67,18 +74,34 @@ const BooksPage = () => {
                         <select className="input" name={"sorting"}>
                             <option value={"date_desk"}>Сначала новые</option>
                             <option value={"date_asc"}>Сначала старые</option>
-                            <option value={"rating_desk"}>Сначала c высоким рейтингом</option>
+                            <option selected={isBestBooks} value={"rating_desk"}>Сначала c высоким рейтингом</option>
                             <option value={"rating_asc"}>Сначала c низким рейтингом</option>
                         </select>
                     </div>
-                    {/*<div className="input-group">*/}
-                    {/*    <label>Оценка от:</label>*/}
-                    {/*    <input type="text" className="input" name={"rate_from"}/>*/}
-                    {/*</div>*/}
-                    {/*<div className="input-group">*/}
-                    {/*    <label>Оценка до:</label>*/}
-                    {/*    <input type="text" className="input" name={"rate_to"}/>*/}
-                    {/*</div>*/}
+                    <div className="input-group">
+                        <label>Cредняя оценка от:</label>
+                        <input
+                            defaultValue={1}
+                            min={1}
+                            max={5}
+                            step={0.1}
+                            type="number"
+                            className="input"
+                            name={"rating_from"}
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label>Cредняя оценка до:</label>
+                        <input
+                            defaultValue={5}
+                            min={1}
+                            max={5}
+                            step={0.1}
+                            type="number"
+                            className="input"
+                            name={"rating_to"}
+                        />
+                    </div>
                     <div className="input-group">
                         <label>Жанры:</label>
                         <select className="input" name={"genres[]"} multiple>

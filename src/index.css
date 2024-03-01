@@ -75,6 +75,11 @@ footer {
 
 
 /* Components */
+.title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
 .card {
     padding: 20px;
     border-radius: 10px;
@@ -126,11 +131,11 @@ textarea {
 .link {
     color: inherit;
     text-decoration: none;
+    text-underline-offset: 4px;
 }
 
 .link:hover {
     text-decoration: 2px solid underline var(--primary-color);
-    text-underline-offset: 2px;
 }
 
 .button {
@@ -220,6 +225,8 @@ textarea {
 
 .key-value > p {
     color: inherit;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .card.form {
@@ -312,6 +319,7 @@ textarea {
     align-items: center;
     justify-content: center;
     transform: scale(0);
+    z-index: 1;
 }
 
 .modal > form {
