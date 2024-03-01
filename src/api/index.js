@@ -6,6 +6,7 @@ export const $fetch = async (route, method = "GET", body) => {
 
     if (["GET", "DELETE"].includes(method)) {
         url.search = new URLSearchParams(body ?? {});
+        body = null;
     }
 
     if (["PUT", "PATCH"].includes(method)) {

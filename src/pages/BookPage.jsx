@@ -81,7 +81,7 @@ const BookPage = () => {
                         </div>
                         <div className="key-value col as">
                             <span>Средняя оценка:</span>
-                            <p>{book.rating}</p>
+                            <p>{book.rating === 0 ? "Нет оценки" : book.rating}</p>
                         </div>
                     </div>
                     <div className="flex col g-10 mt-a">
